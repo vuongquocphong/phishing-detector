@@ -4,7 +4,7 @@ An extension integrating BERT model to detect suspicious content in Google Mail.
 
 How to use:
 
-1. Download the model from [here](https://drive.google.com/drive/folders/1DiAjM2khgWMKamvy643ZqPLIPBTxgTd-) and put it in the `model` folder in the root directory (github doesn't allow files larger than 100MB)
+1. Download the model folder from [here](https://drive.google.com/drive/folders/1DiAjM2khgWMKamvy643ZqPLIPBTxgTd-) and put it in the `model` folder in the root directory (github doesn't allow files larger than 100MB)
 2. Host the model by running `py model_api.py`
 3. Open chrome and go to `chrome://extensions/`
 4. Turn on developer mode
