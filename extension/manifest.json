@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Phishing Detector for Gmail",
+  "version": "1.0",
+  "description": "Detect phishing emails in Gmail using a custom model.",
+  "permissions": [
+    "identity",
+    "identity.email",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": ["https://mail.google.com/*", "http://127.0.0.1/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/icon16.png"
+  }
+}
