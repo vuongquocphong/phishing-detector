@@ -19,8 +19,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             if (result === 'Phishing') {
                 resultElement.innerText = "This email is likely a phishing email.";
             }
-            else {
+            else if (result === 'error') {
+                resultElement.innerText = "An error occurred while processing the email content.";
+            }
+            else if (result === 'Safe') {
                 resultElement.innerText = "This email contains no suspicious content.";
+            }
+            else if (result === '') {
+                resultElement.innerText = "No email content found.";
             }
         }
     }

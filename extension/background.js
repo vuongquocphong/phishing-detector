@@ -32,6 +32,15 @@ injectContentScript();
 
 // Listen for messages from the content script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.content == '') {
+        // If the email content is empty, send an error message
+        chrome.runtime.sendMessage({
+            action: 'displayResult',
+            result: ''
+        });
+        sendResponse({ error: 'No email content found.' });
+        return true;
+    }
     if (message.action === 'detectPhishing') {
         fetch('http://127.0.0.1:5000/predict', {
             name: 'Phishing Detector API',
@@ -54,6 +63,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse(data);
         })
         .catch(error => {
+            chrome.runtime.sendMessage({
+                action: 'displayResult',
+                result: 'error'
+            });
+            sendResponse({ error: error });
             console.error('Error:', error);
         });
 
