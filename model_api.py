@@ -17,9 +17,10 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 @app.route('/predict', methods=['POST'])
 def predict_phishing():
-    data = request.get_json()['emailContent']
+    print(request.get_json())
+    data = request.get_json()
     print(f"Received data: {data}")
-    email_content = data['content']
+    email_content = data['email_content']
     urls = data['urls']  # Extract URLs from the request
     
     # Tokenize the input email content

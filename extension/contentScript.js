@@ -40,5 +40,5 @@ function getEmailContent() {
 // Send the email content to the background script for processing
 chrome.runtime.sendMessage({
     action: "detectPhishing",
-    content: getEmailContent()
+    data: getEmailContent()
 });
