@@ -21,16 +21,16 @@ parser.add_argument('--data.max_len_chars', type=int, default=default_max_len_ch
 default_max_len_subwords = 20
 parser.add_argument('--data.max_len_subwords', type=int, default=default_max_len_subwords, metavar="MLSW",
   help="maxium length of word in subwords/ characters (default: {})".format(default_max_len_subwords))
-parser.add_argument('--data.data_dir', type=str, default='test_1000.txt', metavar="DATADIR",
+parser.add_argument('--data.data_dir', type=str, default='test_urls.txt', metavar="DATADIR",
   help="location of data file")
 default_delimit_mode = 1
 parser.add_argument("--data.delimit_mode", type=int, default=default_delimit_mode, metavar="DLMODE",
   help="0: delimit by special chars, 1: delimit by special chars + each char as a word (default: {})".format(default_delimit_mode))
-parser.add_argument('--data.subword_dict_dir', type=str, default="runs/10000/subwords_dict.p", metavar="SUBWORD_DICT", 
+parser.add_argument('--data.subword_dict_dir', type=str, default="runs/subwords_dict.p", metavar="SUBWORD_DICT", 
 	help="directory of the subword dictionary")
-parser.add_argument('--data.word_dict_dir', type=str, default="runs/10000/words_dict.p", metavar="WORD_DICT",
+parser.add_argument('--data.word_dict_dir', type=str, default="runs/words_dict.p", metavar="WORD_DICT",
 	help="directory of the word dictionary")
-parser.add_argument('--data.char_dict_dir', type=str, default="runs/10000/chars_dict.p", metavar="	CHAR_DICT",
+parser.add_argument('--data.char_dict_dir', type=str, default="runs/chars_dict.p", metavar="CHAR_DICT",
 	help="directory of the character dictionary")
 
 # model args 
@@ -47,9 +47,9 @@ parser.add_argument('--test.batch_size', type=int, default=default_batch_size, m
   help="Size of each test batch (default: {})".format(default_batch_size))
 
 # log args 
-parser.add_argument('--log.output_dir', type=str, default="output/train_10000_test_1000.txt", metavar="OUTPUTDIR",
+parser.add_argument('--log.output_dir', type=str, default="output/test_results.txt", metavar="OUTPUTDIR",
   help="directory to save the test results")
-parser.add_argument('--log.checkpoint_dir', type=str, default="runs/10000/checkpoints/", metavar="CHECKPOINTDIR",
+parser.add_argument('--log.checkpoint_dir', type=str, default="runs/checkpoints/", metavar="CHECKPOINTDIR",
 	help="directory of the learned model")
 
 FLAGS = vars(parser.parse_args())
@@ -176,7 +176,8 @@ with graph.as_default():
 
             it.set_postfix()
 
-if labels is not None: 
+if labels is not None and len(labels) > 0:
+    print(type(labels), labels)
     correct_preds = float(sum(all_predictions == labels)) 
     print("Accuracy: {}".format(correct_preds/float(len(labels))))
 

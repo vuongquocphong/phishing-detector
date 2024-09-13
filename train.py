@@ -29,10 +29,10 @@ parser.add_argument('--data.max_len_subwords', type=int, default=default_max_len
 default_min_word_freq = 1
 parser.add_argument('--data.min_word_freq', type=int, default=default_min_word_freq, metavar="MWF",
   help="minimum frequency of word in training population to build vocabulary (default: {})".format(default_min_word_freq))
-default_dev_pct = 0.001
+default_dev_pct = 0.1
 parser.add_argument('--data.dev_pct', type=float, default=default_dev_pct, metavar="DEVPCT",
   help="percentage of training set used for dev (default: {})".format(default_dev_pct))
-parser.add_argument('--data.data_dir', type=str, default='train_10000.txt', metavar="DATADIR",
+parser.add_argument('--data.data_dir', type=str, default='train_urls.txt', metavar="DATADIR",
   help="location of data file")
 default_delimit_mode = 1 
 parser.add_argument("--data.delimit_mode", type=int, default=default_delimit_mode, metavar="DLMODE",
@@ -63,9 +63,9 @@ parser.add_argument('--train.lr', type=float, default=default_lr, metavar="LR",
   help="learning rate for optimizer (default: {})".format(default_lr))
 
 # log args 
-parser.add_argument('--log.output_dir', type=str, default="runs/10000/", metavar="OUTPUTDIR",
+parser.add_argument('--log.output_dir', type=str, default="runs/", metavar="OUTPUTDIR",
   help="directory of the output model")
-parser.add_argument('--log.print_every', type=int, default=50, metavar="PRINTEVERY",
+parser.add_argument('--log.print_every', type=int, default=100, metavar="PRINTEVERY",
   help="print training result every this number of steps (default: 50)")
 parser.add_argument('--log.eval_every', type=int, default=500, metavar="EVALEVERY",
   help="evaluate the model every this number of steps (default: 500)")

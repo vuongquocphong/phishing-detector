@@ -1,11 +1,11 @@
 flask
 flask_cors
-torch
-safetensors
-transformers
 wheel
 nvidia-pyindex
 nvidia-tensorflow[horovod]
+torch
+safetensors
+transformers
 tflearn==0.3.2
 numpy==1.22.0
 tqdm
