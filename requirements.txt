@@ -3,3 +3,10 @@ flask_cors
 torch
 safetensors
 transformers
+wheel
+nvidia-pyindex
+nvidia-tensorflow[horovod]
+tflearn==0.3.2
+numpy==1.22.0
+tqdm
+Pillow==9.5.0
